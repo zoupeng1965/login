@@ -42,18 +42,17 @@ export default {
          username,
          password
      }).then(res=>{
+       console.log(this,11)
           this.$message({
           showClose: true,
-          message: res.data.succMsg,
+          message: res.succMsg,
         });
     // console.log(res.data.data.token)
-    localStorage.setItem("token",res.data.data.token)
-    localStorage.setItem("userinfo",JSON.stringify(res.data.data) )
+    localStorage.setItem("token",res.data.token)
+    localStorage.setItem("userinfo",JSON.stringify(res.data) )
 
     this.$router.push("/home")
 
-     }).catch(err=>{
-         console.dir(err)
      })
 
 

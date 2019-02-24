@@ -8,7 +8,7 @@
         <el-table-column label="地址">
           <el-table-column prop="province" label="省份" width="120"></el-table-column>
           <el-table-column prop="city" label="市" width="120"></el-table-column>
-           <el-table-column prop="area" label="区" width="120"></el-table-column>
+          <el-table-column prop="area" label="区" width="120"></el-table-column>
           <el-table-column prop="detailed_address" label="地址" width="300"></el-table-column>
           <el-table-column prop="postcode" label="邮编" width="120"></el-table-column>
         </el-table-column>
@@ -22,91 +22,31 @@
 export default {
   data() {
     return {
-      tableData3: [
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          province: "上海",
-          city: "普陀区",
-          address: "上海市普陀区金沙江路 1518 弄",
-          zip: 200333
-        },
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          province: "上海",
-          city: "普陀区",
-          address: "上海市普陀区金沙江路 1518 弄",
-          zip: 200333
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          province: "上海",
-          city: "普陀区",
-          address: "上海市普陀区金沙江路 1518 弄",
-          zip: 200333
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          province: "上海",
-          city: "普陀区",
-          address: "上海市普陀区金沙江路 1518 弄",
-          zip: 200333
-        },
-        {
-          date: "2016-05-08",
-          name: "王小虎",
-          province: "上海",
-          city: "普陀区",
-          address: "上海市普陀区金沙江路 1518 弄",
-          zip: 200333
-        },
-        {
-          date: "2016-05-06",
-          name: "王小虎",
-          province: "上海",
-          city: "普陀区",
-          address: "上海市普陀区金沙江路 1518 弄",
-          zip: 200333
-        },
-        {
-          date: "2016-05-07",
-          name: "王小虎",
-          province: "上海",
-          city: "普陀区",
-          address: "上海市普陀区金沙江路 1518 弄",
-          zip: 200333
-        }
-      ],
-      list:''
-    };
-    
+      list: []
+    }; 
   },
   created() {
-      this. getlist()
+    this.getlist();
   },
   methods: {
-      getlist(){
-          let token= localStorage.getItem("token")||""
-          this.$http.get("users/getReceiverAddress",{
-              headers: {'Authorization': token}
-          }).then(res=>{
-              this.list=res.data.data
-          })
-      }
-  },
+    getlist() {
+      let token = localStorage.getItem("token") || "";
+      this.$http
+        .get("users/getReceiverAddress", {
+          // headers: { Authorization: token }
+          // 拦截器设置了
+        })
+        .then(res => {
+          this.list = res.data;
+        });
+    }
+  }
 };
 </script>
 
 
 <style lang="less">
-
-    .el-col-20 {
-   
-    padding: 40px;
-    
+.el-col-20 {
+  padding: 20px;
 }
-
 </style>

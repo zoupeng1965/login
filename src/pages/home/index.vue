@@ -51,9 +51,9 @@
         </el-menu>
       </el-col>
        <el-col :span="20">
-           <div >
-               <p>昵称:{{userInfo.nickname}}</p>
-               <el-button type="danger">退出登录</el-button>
+           <div class="hz">
+               <p>昵称:{{userinfo.nickname}}</p>
+               <el-button type="danger" @click="remove">退出登录</el-button>
            </div>
             <router-view/>
        </el-col>
@@ -65,8 +65,11 @@
 export default {
     data(){
         return {
-            userinfo: JSON.parse(localStorage.getItem('userInfo') || '{}')
+            userinfo: JSON.parse(localStorage.getItem('userinfo') || '{}')
         }
+    },
+    created() {
+      this.$router.push("/home/alllist")
     },
   methods: {
     handleOpen(key, keyPath) {
@@ -84,10 +87,32 @@ export default {
         break;
          case "1-2":
         // 处理1-2的回调
+        this.$router.push("/home/wuhanlist")
         break;
         
     }
+    },
+    remove(){
+      localStorage.removeItem("token")
+      localStorage.removeItem("userinfo")
+       this.$message({
+          showClose: true,
+          message: "恭喜您退出成功",
+        });
+        this.$router.push("/login")
     }
   }
 };
 </script>
+
+<style lang="less" >
+.home{
+  .hz{
+    display: flex;
+    margin-bottom: 20px;
+    p{
+      margin-right: 20px;
+    }
+  }
+}
+</style>
