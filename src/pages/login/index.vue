@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-      <h1>登录</h1>
+      <h1 class="dl">登录</h1>
     <el-form ref="form"  label-width="80px">
       <el-form-item label="用户账号">
         <el-input v-model="username"></el-input>
@@ -9,9 +9,9 @@
         <el-input v-model="password"></el-input>
       </el-form-item>
     
-      <el-form-item>
+      <el-form-item class="db">
         <el-button type="primary" @click="onSubmit" class="btn">登录</el-button>
-        
+        <router-link class="tz" to="/singup">没有账号?去注册</router-link>
       </el-form-item>
     </el-form>
   </div>
@@ -63,11 +63,25 @@ export default {
 </script>
 
 <style lang="less">
-.login{
+.login,.singup{
     width:40%;
     margin: 200px auto;
-    .btn{
-        width: 100%;
+    .dl{
+      width: 110%;
+color: #0094ff;
+text-align: center
     }
+    .el-form-item__content{
+      display: flex;
+      justify-content: space-between;
+      .btn{
+        width: 30%;
+    }
+    .tz{
+      text-decoration: none;
+        color: #0094ff;
+    }
+    }
+    
 }
 </style>
