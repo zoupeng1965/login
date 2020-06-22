@@ -8,6 +8,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 console.log(666)
+console.log(1666)
 // 引入axios
 import "./api/index.js"
 
