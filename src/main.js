@@ -83,7 +83,7 @@ import "./api/index.js"
 //   }
 // })
 // 模块化开发放到router.js
-
+console.log(5666)
 
 Vue.config.productionTip = false
 
